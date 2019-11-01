@@ -28,12 +28,12 @@ class Home extends Component{
          }],
      goodslist:[{
             path: '/goodslist',
-            text: '商品查询',
+            text: '商品修改',
             name: 'goodslist',
             type:"search"
         },{
             path: '/addlist',
-            text: '商品修改',
+            text: '商品查询',
             name: 'addlist',
             type:"file-done"
         }]

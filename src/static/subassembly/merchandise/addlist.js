@@ -13,7 +13,6 @@ class Addlist  extends Component{
         };
 
    componentDidMount() {
-     window.addEventListener("scroll", this.handleScroll );
           this.fetchData(res => {
             console.log(res);
             
@@ -47,42 +46,6 @@ class Addlist  extends Component{
           });
         };
 
-
-
-
-        handleScroll = () => {
-              console.log(this.refs.add);
-                // console.log(this.refs.tygs.childNodes[this.refs.tygs.childNodes.length - 1]);
-        //         var scrollTop = document.documentElement.scrollTop;
-        //         var offsetTop = this.refs.tygs.childNodes[this.refs.tygs.childNodes.length - 1].offsetTop;
-        //          console.log(scrollTop + 350, offsetTop);
-        //         if (scrollTop + 350 >= offsetTop) {
-        //             clearTimeout(this.state.timer);
-        //             this.setState({
-        //                 timer: setTimeout(async () => {
-        //                     let page = this.state.page;
-        //                     this.setState({
-        //                         page: page + 1
-        //                     });
-        //                     let { data: { data: newdata } } = await axios.get('http://localhost:1907/goods/tyg', {
-        //                         params: {
-        //                             num: 9,
-        //                             page: this.state.page
-        //                         }
-        //                     });
-        //                     let olddata = this.state.datas;
-        //                     newdata.forEach(item => {
-        //                         olddata.push(item);
-        //                     })
-        //                     this.setState({
-        //                         datas: olddata
-        //                     });
-        //                     console.log(this.state.datas)
-        //                 }, 1000)
-        //             });
-        //         }
-            }
-      
   fetchData = callback => {
            reqwest({
             url: fakeDataUrl,
@@ -94,30 +57,33 @@ class Addlist  extends Component{
             },
        });
     };
+
+
   // 对应id删除
     renmoid(id){
       console.log("123" ,id );
   
 
     }
-
-
-
     componentWillUnmount() {
-              window.removeEventListener("scroll", this.handleScroll);
-          }
+        window.removeEventListener("scroll", this.handleScroll);
+    }
 
 render(){
-
-      let {data}=this.state
       return <div style={{height:"100%" }}>
       <Layout style={{ marginLeft: 200 }}>
-            <div  className="demo-infinite-container">
-          <ul  refs="add" >    
-              <List  dataSource={this.state.data}   
-                     renderItem={item => (
-                             <List.Item   key={item._id}  >
-                               <List.Item.Meta
+            <div className="demo-infinite-container">
+             <InfiniteScroll
+                initialLoad={false}
+                pageStart={0}
+                loadMore={this.handleInfiniteOnLoad}
+                hasMore={!this.state.loading && this.state.hasMore}
+                useWindow={false}
+                 >
+                          <List   dataSource={this.state.data}   
+                          renderItem={item => (
+                                <List.Item key={item._id}  id={item.goodsId}  >
+                                  <List.Item.Meta
                                     avatar={
                                       <img src={item.img} style={{width:80}}   />
                                     }
@@ -140,8 +106,14 @@ render(){
                                 <Spin />
                                 </div>
                                 )}
-                        </List>   
-                       </ul>
+                        </List> 
+                    {this.state.loading && this.state.hasMore && (
+                      <div className="demo-loading-container">
+                        <Spin />
+                      </div>
+                    )}
+               </InfiniteScroll>
+         
                 </div>
        </Layout>
    </div>
