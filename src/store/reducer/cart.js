@@ -1,0 +1,57 @@
+import {REMOVE_FROM_CART,CHANGE_QTY,CLEAR_CART,ADD_TO_CART} from '../action/cart';
+let initialState={
+             goodslist:[{    goods_id: "1",
+             goods_name: "huawei mate30 pro",
+             goods_image:
+         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3089410232,3830777459&fm=11&gp=0.jpg",
+            goods_price: 5998,
+             goods_qty: 10},{ goods_id: "1",
+             goods_name: "huawei mate30 pro",
+             goods_image:
+         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3089410232,3830777459&fm=11&gp=0.jpg",
+            goods_price: 5998,
+          goods_qty: 10},{  
+          goods_id: "3",
+            goods_name: "onePlus9 pro",
+            goods_image:
+         "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570536784660&di=d4471f6edf73cace7d98fb05869a9277&imgtype=0&src=http%3A%2F%2Fimg13.360buyimg.com%2Fn1%2Fs450x450_jfs%2Ft28117%2F273%2F1288839750%2F66834%2F8ef15c40%2F5cdd22b8Nbc711aba.jpg",
+             goods_price: 3999,
+              goods_qty: 1
+    }],
+    totalPrice:0
+}
+
+function reducer(state=initialState,{type,payload}){
+    switch(type){
+        case ADD_TO_CART:
+            return{
+                ...state,
+                goodslist:[payload,...state.goodslist]
+            }
+       case REMOVE_FROM_CART:
+           return{
+               ...state,
+               goodslist:state.goodslist.filter(item=>item.goods_id!=payload)
+           }
+       case  CHANGE_QTY:
+            return {
+                ...state,
+                goodslist:state.goodslist.map(item=>{
+                    if(item.goods_id == payload.goods_id){
+                        item.goods_qty=payload.goods_qty
+                    }
+                  return  item
+                })
+            }
+       case CLEAR_CART:
+           return {
+               ...state,
+               goodslist:[]
+           }
+           default:
+                return state;
+    }
+
+}
+
+export default reducer
