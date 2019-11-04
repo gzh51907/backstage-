@@ -4,8 +4,7 @@ const { Header, Content, Footer, Sider } = Layout;
 class Default  extends Component{
     constructor(){
        super()
-        this.state={
-        }
+        this.state={}
     }
     render(){
          return <div style={{height:"100%" }}>

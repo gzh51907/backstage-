@@ -13,45 +13,8 @@ import {
     Button,
     AutoComplete,
   } from 'antd';
-  
   const { Option } = Select;
   const AutoCompleteOption = AutoComplete.Option;
-  
-  const residences = [
-    {
-      value: 'zhejiang',
-      label: 'Zhejiang',
-      children: [
-        {
-          value: 'hangzhou',
-          label: 'Hangzhou',
-          children: [
-            {
-              value: 'xihu',
-              label: 'West Lake',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      label: 'Jiangsu',
-      children: [
-        {
-          value: 'nanjing',
-          label: 'Nanjing',
-          children: [
-            {
-              value: 'zhonghuamen',
-              label: 'Zhong Hua Men',
-            },
-          ],
-        },
-      ],
-    },
-  ];
-  
   class RegistrationForm extends React.Component {
     state = {
       confirmDirty: false,
@@ -140,113 +103,53 @@ import {
   
       return (
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-          <Form.Item label="E-mail">
-            {getFieldDecorator('email', {
-              rules: [
-                {
-                  type: 'email',
-                  message: 'The input is not valid E-mail!',
-                },
-                {
-                  required: true,
-                  message: 'Please input your E-mail!',
-                },
-              ],
-            })(<Input />)}
-          </Form.Item>
-          <Form.Item label="Password" hasFeedback>
-            {getFieldDecorator('password', {
-              rules: [
-                {
-                  required: true,
-                  message: 'Please input your password!',
-                },
-                {
-                  validator: this.validateToNextPassword,
-                },
-              ],
-            })(<Input.Password />)}
-          </Form.Item>
-          <Form.Item label="Confirm Password" hasFeedback>
-            {getFieldDecorator('confirm', {
-              rules: [
-                {
-                  required: true,
-                  message: 'Please confirm your password!',
-                },
-                {
-                  validator: this.compareToFirstPassword,
-                },
-              ],
-            })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-          </Form.Item>
           <Form.Item
             label={
               <span>
-                Nickname&nbsp;
+                合作商家
                 <Tooltip title="What do you want others to call you?">
-                  <Icon type="question-circle-o" />
+                  <Icon  />
                 </Tooltip>
               </span>
             }
           >
             {getFieldDecorator('nickname', {
-              rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+              rules: [{ required: true, message: '数据不能为空!', whitespace: true }],
             })(<Input />)}
           </Form.Item>
-          {/* <Form.Item label="Habitual Residence">
-            {getFieldDecorator('residence', {
-              initialValue: ['zhejiang', 'hangzhou', 'xihu'],
-              rules: [
-                { type: 'array', required: true, message: 'Please select your habitual residence!' },
-              ],
-            })(<Cascader options={residences} />)}
-          </Form.Item> */}
-          {/* <Form.Item label="Phone Number">
-            {getFieldDecorator('phone', {
-              rules: [{ required: true, message: 'Please input your phone number!' }],
-            })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
-          </Form.Item> */}
-          {/* <Form.Item label="Website">
-            {getFieldDecorator('website', {
-              rules: [{ required: true, message: 'Please input website!' }],
-            })(
-              <AutoComplete
-                dataSource={websiteOptions}
-                onChange={this.handleWebsiteChange}
-                placeholder="website"
-              >
-                <Input />
-              </AutoComplete>,
-            )}
-          </Form.Item> */}
-          {/* <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-            <Row gutter={8}>
-              <Col span={12}>
-                {getFieldDecorator('captcha', {
-                  rules: [{ required: true, message: 'Please input the captcha you got!' }],
-                })(<Input />)}
-              </Col>
-              <Col span={12}>
-                <Button>Get captcha</Button>
-              </Col>
-            </Row>
-          </Form.Item> */}
-          {/* <Form.Item {...tailFormItemLayout}>
+
+
+          <Form.Item
+            label={
+              <span>
+                规格
+                <Tooltip title="What do you want others to call you?">
+                  <Icon  />
+                </Tooltip>
+              </span>
+            }
+          >
+            {getFieldDecorator('nickname', {
+              rules: [{ required: true, message: '数据不能为空!', whitespace: true }],
+            })(<Input />)}
+          </Form.Item>
+          
+          <Form.Item {...tailFormItemLayout}>
             {getFieldDecorator('agreement', {
               valuePropName: 'checked',
+              initialValue: true,
             })(
               <Checkbox>
-                I have read the <a href="">agreement</a>
+               添加一组数据 <a href=""></a>
               </Checkbox>,
             )}
-          </Form.Item> */}
-          {/* <Form.Item {...tailFormItemLayout}>
+          </Form.Item>
+         <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit">
-              Register
+              添加
             </Button>
-          </Form.Item> */}
-        </Form>
+          </Form.Item>
+        </Form> 
       );
     }
   }

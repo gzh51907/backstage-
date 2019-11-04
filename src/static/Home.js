@@ -28,7 +28,7 @@ class Home extends Component{
          }],
      goodslist:[{
             path: '/goodslist',
-            text: '商品修改',
+            text: '商品添加',
             name: 'goodslist',
             type:"search"
         },{

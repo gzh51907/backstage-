@@ -1,15 +1,17 @@
 import React,{Component} from "react";
 import { Form, Input, Button, Checkbox, Icon, Modal, message } from 'antd';
+import Api from "APi";
 class Login  extends Component{
-    state={
-          usrename:"",
-    }
-
     handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields(async(err, values) => {
           if (!err) {
             console.log('Received values of form: ', values);
+                 let {data}=await Api.get({
+
+                    
+                 })
+
           }
         });
       };
