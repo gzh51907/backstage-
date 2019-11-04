@@ -64,7 +64,7 @@ class Goodlist extends Component {
         timing: 0,
         afterTimingState: null
       }
-      let { data } = axios.post('http://localhost:1998/goodinf', {
+      let { data } = axios.post('http://47.98.245.185:1998/goodinf', {
         query
       });
       // console.log(data);
@@ -147,7 +147,7 @@ class Goodlist extends Component {
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
-        action="http://localhost:1998/goodinf/pic"
+        action="http://47.98.245.185:1998/goodinf/pic"
         onChange={this.handleChange}
       >
         {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
