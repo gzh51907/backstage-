@@ -4,6 +4,7 @@ import { Layout, Menu, Icon , Avatar,Breadcrumb} from 'antd';
 const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
 import Default from "~/default.js";
+import Login from "~/Login.js";
 import  GoodList from '~/merchandise/commit.js'
 import Addlist from "~/merchandise/addlist.js";
 import userlist from "~/userlist/username.js";
@@ -36,7 +37,8 @@ class Home extends Component{
             text: '商品查询',
             name: 'addlist',
             type:"file-done"
-        }]
+        }],
+        token: '111'
     }
       goto =(path)=>{    
         this.props.history.push(path)
@@ -47,8 +49,20 @@ class Home extends Component{
     }
 
 
+    componentDidMount() {
+        if (!sessionStorage.getItem('token') && !localStorage.getItem('token')) {
+            this.setState({
+                token: ''
+            });
+        }
+
+        if (!this.state.token) this.goto('/login');
+    }
     render() {
-       let {goodslist,usermane}=this.state
+    if(!this.state.token){
+        return <Route path="/login" component={Login} />;
+    }else{
+        let {goodslist,usermane}=this.state
         return (
             <div>
              <Layout>
@@ -100,6 +114,10 @@ class Home extends Component{
                </Switch>
             </div>
         )
+
+    }
+
+    
     }
 }
 

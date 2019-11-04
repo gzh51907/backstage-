@@ -1,0 +1,37 @@
+.username{
+   height: 80px;
+   width: 100%;
+   background-color: rgba(139, 128, 128, 0.644);
+   margin: 25px 0;
+}
+
+.usernameimg{
+   width:60px;
+   padding: 11px 0 0  10px;
+   box-sizing: border-box;
+   float: left;
+}
+
+.usernameimg img{
+   width: 100%;
+   border-radius:20px
+}
+
+.usernameuser{
+   margin-left: 78px;
+   float: left;
+   height: 100%;
+}
+
+.personage{
+   line-height: 86px;
+   font-size: 15px;
+   width: 270px;
+}
+
+
+.usernamebutton{
+   float: right;
+   line-height: 89px;
+   
+}

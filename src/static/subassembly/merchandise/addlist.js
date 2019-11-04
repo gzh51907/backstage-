@@ -24,13 +24,11 @@ class Addlist  extends Component{
 
 
       handleScroll = () => {
-        // console.log(this.refs.tygs.childNodes[this.refs.tygs.childNodes.length - 1]);
         var scrollTop =
             window.pageYOffset ||
             document.documentElement.scrollTop ||
             document.body.scrollTop;
         var offsetTop = this.refs.find.childNodes[this.refs.find.childNodes.length - 1].offsetTop;
-        // console.log(scrollTop + 620, offsetTop);
         if (scrollTop + 620 >= offsetTop) {
             clearTimeout(this.state.timer);
             this.setState({
