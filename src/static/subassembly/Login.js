@@ -1,18 +1,27 @@
 import React,{Component} from "react";
 import { Form, Input, Button, Checkbox, Icon, Modal, message } from 'antd';
 import Api from "APi";
+import { SSL_OP_LEGACY_SERVER_CONNECT } from "constants";
+import { log } from "util";
 class Login  extends Component{
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields(async(err, values) => {
           if (!err) {
-            console.log('Received values of form: ', values);
-                 let {data}=await Api.get({
+          let data= await Api.login({    
+             params:{
+                  phone: values.username,
+                  password: values.password,
+             }
+          })   
+        if(data.code===1){
+          message.success('登录成功！');
+          localStorage.setItem('token', 1314366668);
+          this.props.history.push('/default');
+        }
 
-                    
-                 })
-
-          }
+          
+       }
         });
       };
     render(){     

@@ -4,6 +4,7 @@ import {BrowserRouter,HashRouter} from 'react-router-dom'
 import { Provider } from "react-redux";
 import Home from "@/static/Home"
 import Login from "@/static/subassembly/Login.js";
+import   App   from "@/App";
 
 render(
     <HashRouter>

@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "antd": "^3.24.3",
+    "fs": "0.0.1-security",
+    "inspector": "^0.5.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-infinite-scroller": "^1.2.4",
